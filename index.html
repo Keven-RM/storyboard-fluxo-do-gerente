@@ -3,350 +3,247 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Painel do Gerente — Protótipo</title>
+<title>Storyboard — Fluxo do Gerente (Carlos)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#F1F3EF; --ink:#1C2333; --ink-soft:#5B6472; --paper:#FFFFFF; --line:#DADFD8;
-  --amber:#E2A63B; --amber-soft:#FBEDD3; --amber-ink:#8A5B12;
-  --teal:#2E7D6B; --teal-soft:#E1F0EC;
-  --rose:#C4573C; --rose-soft:#F7E4DE;
-  font-family:'Inter',system-ui,sans-serif;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#14171C; --ink:#EDEFEC; --ink-soft:#9AA3AE; --paper:#1D2127; --line:#2B313A;
-    --amber-soft:#3A2E17; --teal-soft:#15281F; --rose-soft:#3A1F19;
+  :root{
+    --bg:#F1F3EF;
+    --ink:#1C2333;
+    --ink-soft:#5B6472;
+    --paper:#FFFFFF;
+    --line:#DADFD8;
+    --amber:#E2A63B;
+    --amber-soft:#FBEDD3;
+    --teal:#2E7D6B;
+    --teal-soft:#E1F0EC;
+    --rose:#C4573C;
+    font-family:'Inter',system-ui,sans-serif;
   }
-}
-:root[data-theme="dark"]{
-  --bg:#14171C; --ink:#EDEFEC; --ink-soft:#9AA3AE; --paper:#1D2127; --line:#2B313A;
-  --amber-soft:#3A2E17; --teal-soft:#15281F; --rose-soft:#3A1F19;
-}
-*{box-sizing:border-box;}
-html,body{margin:0;background:var(--bg);color:var(--ink);height:100%;}
-body{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);}
-button{font-family:inherit;cursor:pointer;}
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#14171C; --ink:#EDEFEC; --ink-soft:#9AA3AE; --paper:#1D2127; --line:#2B313A;
+      --amber-soft:#3A2E17; --teal-soft:#15281F;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#14171C; --ink:#EDEFEC; --ink-soft:#9AA3AE; --paper:#1D2127; --line:#2B313A;
+    --amber-soft:#3A2E17; --teal-soft:#15281F;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;background:var(--bg);color:var(--ink);}
+  body{
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:56px 28px 80px;}
+  header.top{margin-bottom:44px;}
+  .eyebrow{font-family:'Space Grotesk';font-weight:600;font-size:13px;color:var(--teal);letter-spacing:.02em;margin:0 0 10px;}
+  h1{font-family:'Space Grotesk';font-weight:700;font-size:clamp(28px,4vw,42px);line-height:1.1;margin:0 0 14px;max-width:16ch;}
+  .sub{color:var(--ink-soft);font-size:16px;line-height:1.6;max-width:62ch;margin:0;}
+  .legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:26px;font-size:13px;color:var(--ink-soft);}
+  .legend span{display:inline-flex;align-items:center;gap:7px;}
+  .dot{width:9px;height:9px;border-radius:2px;display:inline-block;}
 
-/* Top bar */
-.topbar{position:sticky;top:0;padding-top:env(safe-area-inset-top,0px);background:var(--paper);border-bottom:1px solid var(--line);z-index:20;}
-.topbar-inner{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 22px;}
-.brand{display:flex;align-items:center;gap:10px;}
-.brand-mark{width:30px;height:30px;border-radius:8px;background:var(--ink);display:flex;align-items:center;justify-content:center;color:var(--bg);font-family:'Space Grotesk';font-weight:700;font-size:14px;}
-.brand-name{font-family:'Space Grotesk';font-weight:600;font-size:15px;}
-.brand-sub{font-size:11px;color:var(--ink-soft);}
-.top-right{display:flex;align-items:center;gap:14px;}
-.iconbtn{position:relative;width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:var(--paper);display:flex;align-items:center;justify-content:center;}
-.iconbtn svg{width:18px;height:18px;stroke:var(--ink);fill:none;stroke-width:2;}
-.badge{position:absolute;top:-4px;right:-4px;background:var(--rose);color:#fff;font-size:10px;font-weight:700;border-radius:8px;min-width:16px;height:16px;display:flex;align-items:center;justify-content:center;padding:0 3px;}
-.avatar{width:36px;height:36px;border-radius:50%;background:var(--teal-soft);color:var(--teal);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk';font-weight:700;font-size:13px;}
+  .arc{display:flex;gap:6px;margin:36px 0 6px;overflow-x:auto;padding-bottom:6px;}
+  .arc-step{flex:1 0 auto;min-width:120px;text-align:center;padding:10px 8px;border-radius:10px;background:var(--paper);border:1px solid var(--line);font-size:12px;font-weight:600;color:var(--ink-soft);}
+  .arc-step.active{background:var(--ink);color:var(--bg);border-color:var(--ink);}
 
-/* Notif dropdown */
-.dropdown{position:absolute;top:52px;right:22px;width:300px;background:var(--paper);border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.12);display:none;overflow:hidden;z-index:30;}
-.dropdown.open{display:block;}
-.dropdown h4{margin:0;padding:14px 16px;font-family:'Space Grotesk';font-size:13px;border-bottom:1px solid var(--line);}
-.dropdown-item{padding:12px 16px;border-bottom:1px solid var(--line);font-size:13px;line-height:1.45;}
-.dropdown-item:last-child{border-bottom:none;}
-.dropdown-item b{display:block;font-size:12.5px;margin-bottom:2px;}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:30px;}
+  @media (max-width:900px){.grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:560px){.grid{grid-template-columns:1fr;}}
 
-.wrap{max-width:1180px;margin:0 auto;padding:30px 22px 90px;}
-.page-head{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:26px;}
-.eyebrow{font-family:'Space Grotesk';font-weight:600;font-size:12.5px;color:var(--teal);margin:0 0 6px;}
-h1{font-family:'Space Grotesk';font-weight:700;font-size:clamp(22px,3vw,30px);margin:0;}
-.datepick{font-size:13px;color:var(--ink-soft);}
+  .panel{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;}
+  .panel-num{font-family:'Space Grotesk';font-size:12px;font-weight:600;color:var(--ink-soft);padding:12px 14px 0;}
+  .stage{font-family:'Space Grotesk';font-size:11px;font-weight:700;text-transform:none;padding:2px 14px 10px;color:var(--teal);}
+  .scene{aspect-ratio:4/3;background:var(--bg);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .scene svg{width:100%;height:100%;display:block;}
+  .cap{padding:14px 16px 16px;font-size:13.5px;line-height:1.5;color:var(--ink);}
+  .tag{display:inline-block;margin:0 16px 16px;font-family:'Space Grotesk';font-size:11px;font-weight:600;padding:4px 9px;border-radius:6px;width:fit-content;}
+  .tag.alert{background:var(--amber-soft);color:#8A5B12;}
+  .tag.win{background:var(--teal-soft);color:var(--teal);}
+  .tag.neutral{background:var(--line);color:var(--ink-soft);}
 
-/* KPI row - RF-002 */
-.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:26px;}
-@media (max-width:900px){.kpis{grid-template-columns:repeat(2,1fr);}}
-@media (max-width:520px){.kpis{grid-template-columns:1fr;}}
-.kpi{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px;}
-.kpi .label{font-size:12.5px;color:var(--ink-soft);margin-bottom:8px;}
-.kpi .value{font-family:'Space Grotesk';font-size:24px;font-weight:700;}
-.kpi .delta{font-size:12px;margin-top:6px;}
-.delta.up{color:var(--teal);}
-.delta.down{color:var(--rose);}
-.progress{margin-top:12px;height:6px;border-radius:4px;background:var(--line);overflow:hidden;}
-.progress > i{display:block;height:100%;background:var(--teal);border-radius:4px;}
-
-.cols{display:grid;grid-template-columns:1.3fr 1fr;gap:20px;align-items:start;}
-@media (max-width:900px){.cols{grid-template-columns:1fr;}}
-
-.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:20px;}
-.card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
-.card-title{font-family:'Space Grotesk';font-weight:600;font-size:15px;}
-.card-tag{font-size:11px;font-weight:600;color:var(--ink-soft);background:var(--bg);border:1px solid var(--line);padding:3px 8px;border-radius:6px;}
-
-/* mini chart - part of RF-002 */
-.chartbar{display:flex;align-items:flex-end;gap:8px;height:120px;}
-.chartbar i{flex:1;background:var(--teal);opacity:.55;border-radius:4px 4px 0 0;}
-.chartbar i:last-child{opacity:1;}
-.chart-labels{display:flex;gap:8px;margin-top:6px;}
-.chart-labels span{flex:1;text-align:center;font-size:11px;color:var(--ink-soft);}
-
-/* Estoque - RF-004 / RF-016 */
-.stock-item{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--line);gap:10px;}
-.stock-item:last-child{border-bottom:none;}
-.stock-info{display:flex;align-items:center;gap:10px;}
-.stock-dot{width:9px;height:9px;border-radius:50%;}
-.stock-dot.low{background:var(--amber);}
-.stock-name{font-size:13.5px;}
-.stock-qty{font-size:12px;color:var(--ink-soft);}
-.mini-btn{font-size:12px;font-weight:600;border:1px solid var(--line);background:var(--paper);border-radius:8px;padding:6px 10px;color:var(--ink);}
-.mini-btn:hover{border-color:var(--ink);}
-.mini-btn.done{background:var(--teal-soft);color:var(--teal);border-color:transparent;}
-
-/* Fechamento de caixa - RF-005 */
-.close-card{background:linear-gradient(135deg,var(--ink),#2B3548);color:#EDEFEC;border:none;}
-.close-card .card-title{color:#fff;}
-.close-card .card-tag{background:rgba(255,255,255,.12);border-color:transparent;color:#DCE0E6;}
-.close-desc{font-size:13px;color:#C7CCD4;line-height:1.55;margin-bottom:16px;}
-.cta{background:var(--amber);color:#33220A;border:none;border-radius:10px;padding:12px 18px;font-weight:700;font-size:14px;width:100%;}
-
-/* Relatório automático - RF-003 */
-.report-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:13px;}
-.report-row:last-child{border-bottom:none;}
-.check{width:20px;height:20px;border-radius:50%;background:var(--teal-soft);color:var(--teal);display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;}
-
-/* Modal - fechamento de caixa flow */
-.overlay{position:fixed;inset:0;background:rgba(20,23,28,.5);display:none;align-items:flex-end;justify-content:center;z-index:50;}
-.overlay.open{display:flex;}
-.sheet{width:100%;max-width:420px;background:var(--paper);border-radius:20px 20px 0 0;padding:22px 22px calc(24px + env(safe-area-inset-bottom,0px));max-height:88vh;overflow-y:auto;}
-.sheet-handle{width:36px;height:4px;background:var(--line);border-radius:4px;margin:0 auto 16px;}
-.sheet h3{font-family:'Space Grotesk';margin:0 0 4px;font-size:17px;}
-.sheet .step-sub{font-size:12.5px;color:var(--ink-soft);margin-bottom:18px;}
-.steps{display:flex;gap:6px;margin-bottom:20px;}
-.steps i{flex:1;height:4px;border-radius:3px;background:var(--line);}
-.steps i.on{background:var(--teal);}
-.field{margin-bottom:14px;}
-.field label{display:block;font-size:12px;color:var(--ink-soft);margin-bottom:6px;}
-.field .value-display{font-family:'Space Grotesk';font-size:26px;font-weight:700;}
-.summary-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--line);font-size:13.5px;}
-.summary-row:last-child{border-bottom:none;font-weight:700;}
-.success{text-align:center;padding:10px 0 4px;}
-.success .circle{width:56px;height:56px;border-radius:50%;background:var(--teal-soft);color:var(--teal);display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 14px;}
-.sheet-actions{display:flex;gap:10px;margin-top:20px;}
-.btn-secondary{flex:1;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px;font-weight:600;font-size:13.5px;color:var(--ink);}
-.btn-primary{flex:1;background:var(--ink);color:#fff;border:none;border-radius:10px;padding:12px;font-weight:600;font-size:13.5px;}
+  footer{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);color:var(--ink-soft);font-size:13px;}
 </style>
 </head>
 <body>
-
-<div class="topbar">
-  <div class="topbar-inner">
-    <div class="brand">
-      <div class="brand-mark">L</div>
-      <div>
-        <div class="brand-name">Painel do Gerente</div>
-        <div class="brand-sub">Loja Batel · Curitiba</div>
-      </div>
-    </div>
-    <div class="top-right">
-      <button class="iconbtn" id="bellBtn" aria-label="Notificações">
-        <svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
-        <span class="badge" id="bellBadge">2</span>
-      </button>
-      <div class="avatar">CR</div>
-    </div>
-  </div>
-  <div class="dropdown" id="dropdown">
-    <h4>Notificações</h4>
-    <div class="dropdown-item"><b>Estoque baixo · Camiseta Básica P</b>Restam 4 unidades — repor ainda hoje.</div>
-    <div class="dropdown-item"><b>Relatório enviado</b>Indicadores de ontem enviados ao franqueado automaticamente.</div>
-  </div>
-</div>
-
 <div class="wrap">
-  <div class="page-head">
-    <div>
-      <p class="eyebrow">HOJE · TERÇA-FEIRA</p>
-      <h1>Olá, Carlos</h1>
+
+  <header class="top">
+    <p class="eyebrow">FASE 3 · STORYBOARD DE UX</p>
+    <h1>Um dia na loja de Carlos, antes e depois do sistema de BI</h1>
+    <p class="sub">Storyboard do principal fluxo de uso, construído sobre a estrutura Pixar da Fase 1 (persona: Carlos, Gerente Operacional) e mapeado aos requisitos funcionais da planilha de Fase 2.</p>
+    <div class="legend">
+      <span><i class="dot" style="background:var(--amber)"></i> Ponto de dor</span>
+      <span><i class="dot" style="background:var(--teal)"></i> Momento com a solução</span>
+      <span><i class="dot" style="background:var(--ink-soft)"></i> Requisito mapeado (RF)</span>
     </div>
-    <div class="datepick">22 de setembro, 14:32</div>
+  </header>
+
+  <div class="arc">
+    <div class="arc-step active">Era uma vez</div>
+    <div class="arc-step active">Todos os dias</div>
+    <div class="arc-step">Um certo dia</div>
+    <div class="arc-step">Por causa disso</div>
+    <div class="arc-step">Por causa disso</div>
+    <div class="arc-step">Até que finalmente</div>
   </div>
 
-  <!-- RF-002: indicadores diários -->
-  <div class="kpis">
-    <div class="kpi">
-      <div class="label">Vendas do dia</div>
-      <div class="value">R$ 4.280</div>
-      <div class="delta up">↑ 12% vs. ontem</div>
-    </div>
-    <div class="kpi">
-      <div class="label">Ticket médio</div>
-      <div class="value">R$ 96,80</div>
-      <div class="delta up">↑ 4% vs. ontem</div>
-    </div>
-    <div class="kpi">
-      <div class="label">Itens vendidos</div>
-      <div class="value">44</div>
-      <div class="delta down">↓ 2 vs. ontem</div>
-    </div>
-    <div class="kpi">
-      <div class="label">Meta do dia</div>
-      <div class="value">78%</div>
-      <div class="progress"><i style="width:78%"></i></div>
-    </div>
-  </div>
+  <section class="grid" id="grid"></section>
 
-  <div class="cols">
-    <div>
-      <!-- RF-002: gráfico -->
-      <div class="card">
-        <div class="card-head">
-          <div class="card-title">Vendas — últimos 7 dias</div>
-          <div class="card-tag">RF-002</div>
-        </div>
-        <div class="chartbar">
-          <i style="height:52%"></i><i style="height:64%"></i><i style="height:40%"></i>
-          <i style="height:78%"></i><i style="height:58%"></i><i style="height:70%"></i><i style="height:88%"></i>
-        </div>
-        <div class="chart-labels">
-          <span>Qui</span><span>Sex</span><span>Sáb</span><span>Dom</span><span>Seg</span><span>Ter</span><span>Hoje</span>
-        </div>
-      </div>
-
-      <!-- RF-004 / RF-016: alertas de estoque -->
-      <div class="card">
-        <div class="card-head">
-          <div class="card-title">Alertas de estoque</div>
-          <div class="card-tag">RF-004 · RF-016</div>
-        </div>
-        <div id="stockList">
-          <div class="stock-item" data-item="1">
-            <div class="stock-info"><span class="stock-dot low"></span>
-              <div><div class="stock-name">Camiseta Básica P</div><div class="stock-qty">4 unidades restantes</div></div>
-            </div>
-            <button class="mini-btn" data-action="repor">Notificar reposição</button>
-          </div>
-          <div class="stock-item" data-item="2">
-            <div class="stock-info"><span class="stock-dot low"></span>
-              <div><div class="stock-name">Boné Aba Reta Preto</div><div class="stock-qty">2 unidades restantes</div></div>
-            </div>
-            <button class="mini-btn" data-action="repor">Notificar reposição</button>
-          </div>
-          <div class="stock-item" data-item="3">
-            <div class="stock-info"><span class="stock-dot low"></span>
-              <div><div class="stock-name">Meia Cano Alto (par)</div><div class="stock-qty">6 unidades restantes</div></div>
-            </div>
-            <button class="mini-btn" data-action="repor">Notificar reposição</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div>
-      <!-- RF-005: fechamento de caixa -->
-      <div class="card close-card">
-        <div class="card-head">
-          <div class="card-title">Fechamento de caixa</div>
-          <div class="card-tag">RF-005</div>
-        </div>
-        <p class="close-desc">Feche o caixa do dia em poucos toques, direto do celular — sem planilha, sem erro de digitação.</p>
-        <button class="cta" id="openClose">Fechar caixa de hoje</button>
-      </div>
-
-      <!-- RF-003: relatório automático -->
-      <div class="card">
-        <div class="card-head">
-          <div class="card-title">Relatório para o franqueado</div>
-          <div class="card-tag">RF-003</div>
-        </div>
-        <div class="report-row"><span class="check">✓</span> Enviado automaticamente às 08:00 — 21 de set.</div>
-        <div class="report-row"><span class="check">✓</span> Enviado automaticamente às 08:00 — 20 de set.</div>
-        <div class="report-row"><span class="check">✓</span> Enviado automaticamente às 08:00 — 19 de set.</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal: fluxo de fechamento de caixa -->
-<div class="overlay" id="overlay">
-  <div class="sheet">
-    <div class="sheet-handle"></div>
-    <div id="sheetContent"></div>
-  </div>
+  <footer>Storyboard elaborado a partir das personas Carlos, João e Ana (Fase 1) e da planilha de Requisitos Funcionais/Não Funcionais (Fase 2). Serve de base para o protótipo de alta fidelidade do Painel do Gerente.</footer>
 </div>
 
 <script>
-// Notification dropdown
-const bellBtn = document.getElementById('bellBtn');
-const dropdown = document.getElementById('dropdown');
-bellBtn.addEventListener('click', (e)=>{
-  e.stopPropagation();
-  dropdown.classList.toggle('open');
-});
-document.addEventListener('click', ()=> dropdown.classList.remove('open'));
+const NS = "http://www.w3.org/2000/svg";
+const palette = { ink:"#1C2333", inkSoft:"#5B6472", amber:"#E2A63B", teal:"#2E7D6B", rose:"#C4573C", line:"#DADFD8", paper:"#FFFFFF" };
 
-// Stock "notificar reposição"
-document.querySelectorAll('[data-action="repor"]').forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    btn.textContent = 'Reposição notificada';
-    btn.classList.add('done');
-    btn.disabled = true;
-  });
-});
-
-// Fechamento de caixa — sheet flow (3 passos)
-const overlay = document.getElementById('overlay');
-const sheetContent = document.getElementById('sheetContent');
-let closeStep = 1;
-let cashValue = 4280;
-
-function renderStep(){
-  if(closeStep===1){
-    sheetContent.innerHTML = `
-      <h3>Conferência de caixa</h3>
-      <div class="step-sub">Passo 1 de 3 — confirme o valor apurado</div>
-      <div class="steps"><i class="on"></i><i></i><i></i></div>
-      <div class="field">
-        <label>Valor total em vendas</label>
-        <div class="value-display">R$ ${cashValue.toLocaleString('pt-BR')},00</div>
-      </div>
-      <div class="field">
-        <label>Forma de pagamento</label>
-        <div class="summary-row"><span>Cartão</span><span>R$ 2.960,00</span></div>
-        <div class="summary-row"><span>Pix</span><span>R$ 980,00</span></div>
-        <div class="summary-row"><span>Dinheiro</span><span>R$ 340,00</span></div>
-      </div>
-      <div class="sheet-actions">
-        <button class="btn-secondary" id="cancelBtn">Cancelar</button>
-        <button class="btn-primary" id="nextBtn">Confirmar valores</button>
-      </div>`;
-    document.getElementById('cancelBtn').onclick = closeSheet;
-    document.getElementById('nextBtn').onclick = ()=>{ closeStep=2; renderStep(); };
-  } else if(closeStep===2){
-    sheetContent.innerHTML = `
-      <h3>Revisar fechamento</h3>
-      <div class="step-sub">Passo 2 de 3 — confira antes de enviar</div>
-      <div class="steps"><i class="on"></i><i class="on"></i><i></i></div>
-      <div class="summary-row"><span>Total do dia</span><span>R$ ${cashValue.toLocaleString('pt-BR')},00</span></div>
-      <div class="summary-row"><span>Itens vendidos</span><span>44</span></div>
-      <div class="summary-row"><span>Divergências encontradas</span><span>Nenhuma</span></div>
-      <div class="sheet-actions">
-        <button class="btn-secondary" id="backBtn">Voltar</button>
-        <button class="btn-primary" id="confirmBtn">Fechar caixa</button>
-      </div>`;
-    document.getElementById('backBtn').onclick = ()=>{ closeStep=1; renderStep(); };
-    document.getElementById('confirmBtn').onclick = ()=>{ closeStep=3; renderStep(); };
-  } else {
-    sheetContent.innerHTML = `
-      <div class="success">
-        <div class="circle">✓</div>
-        <h3>Caixa fechado com sucesso</h3>
-        <p class="step-sub">O relatório será enviado automaticamente ao franqueado — sem planilhas manuais.</p>
-      </div>
-      <div class="sheet-actions">
-        <button class="btn-primary" id="doneBtn" style="flex:1 1 100%">Concluir</button>
-      </div>`;
-    document.getElementById('doneBtn').onclick = closeSheet;
-  }
+function svgWrap(inner){
+  return `<svg viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
 }
-function openSheet(){ closeStep=1; renderStep(); overlay.classList.add('open'); }
-function closeSheet(){ overlay.classList.remove('open'); }
-document.getElementById('openClose').addEventListener('click', openSheet);
-overlay.addEventListener('click', (e)=>{ if(e.target===overlay) closeSheet(); });
+function person(x,y,scale=1,mood="neutral"){
+  // simple flat character: head + body, arms optional via mood
+  const c = palette.ink;
+  let extra = "";
+  if(mood==="stress"){
+    extra += `<path d="M${x-14} ${y-46} q4 -8 10 -10 M${x+4} ${y-46} q4 -8 10 -10" stroke="${palette.rose}" stroke-width="2.4" fill="none" stroke-linecap="round"/>`;
+  }
+  if(mood==="calm"){
+    extra += `<path d="M${x-10} ${y-40} q10 8 20 0" stroke="${palette.teal}" stroke-width="2.4" fill="none" stroke-linecap="round"/>`;
+  }
+  return `
+    <g transform="translate(${x} ${y}) scale(${scale})">
+      <circle cx="0" cy="-52" r="16" fill="${c}"/>
+      <path d="M-20 20 Q-20 -22 0 -22 Q20 -22 20 20 Z" fill="${c}"/>
+      ${extra}
+    </g>`;
+}
+function laptop(x,y,glow){
+  return `
+    <g transform="translate(${x} ${y})">
+      <rect x="-26" y="-16" width="52" height="32" rx="3" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="2.2"/>
+      <rect x="-32" y="16" width="64" height="6" rx="2" fill="${palette.ink}"/>
+      ${glow?`<rect x="-20" y="-10" width="40" height="20" rx="2" fill="${palette.amber}" opacity="0.35"/>`:''}
+    </g>`;
+}
+function phone(x,y,notif){
+  return `
+    <g transform="translate(${x} ${y})">
+      <rect x="-11" y="-22" width="22" height="44" rx="5" fill="${palette.paper}" stroke="${palette.ink}" stroke-width="2.2"/>
+      <line x1="-6" y1="16" x2="6" y2="16" stroke="${palette.ink}" stroke-width="2"/>
+      ${notif?`<circle cx="8" cy="-16" r="5" fill="${palette.rose}"/>`:''}
+    </g>`;
+}
+function box(x,y,low){
+  return `
+    <g transform="translate(${x} ${y})">
+      <rect x="-14" y="-12" width="28" height="24" rx="2" fill="${low?palette.amber:palette.teal}" opacity="${low?0.9:0.75}"/>
+      <line x1="-14" y1="-2" x2="14" y2="-2" stroke="${palette.paper}" stroke-width="2"/>
+    </g>`;
+}
+function bell(x,y){
+  return `
+    <g transform="translate(${x} ${y})">
+      <path d="M0 -14 a10 10 0 0 1 10 10 v6 l4 5 h-28 l4 -5 v-6 a10 10 0 0 1 10 -10 z" fill="${palette.amber}"/>
+      <circle cx="0" cy="10" r="3" fill="${palette.amber}"/>
+    </g>`;
+}
+function counter(x,y,w){
+  return `<rect x="${x}" y="${y}" width="${w}" height="10" fill="${palette.line}"/>`;
+}
+function chart(x,y){
+  const bars=[18,30,22,36,28];
+  return `<g transform="translate(${x} ${y})">` + bars.map((h,i)=>`<rect x="${i*14}" y="${40-h}" width="9" height="${h}" fill="${palette.teal}" opacity="${0.5+i*0.1}"/>`).join('') + `</g>`;
+}
+function speech(x,y,color){
+  return `<g transform="translate(${x} ${y})">
+    <rect x="-6" y="-30" width="70" height="26" rx="8" fill="${color}"/>
+    <path d="M2 -4 l-6 10 l14 -6 z" fill="${color}"/>
+  </g>`;
+}
+
+const scenes = [
+`<rect width="320" height="240" fill="${palette.paper}"/>
+ ${counter(20,190,280)}
+ ${person(90,190,1,"neutral")}
+ ${laptop(180,168,false)}
+ <text x="215" y="150" font-family="Inter" font-size="11" fill="${palette.inkSoft}">planilha.xlsx</text>`,
+
+`<rect width="320" height="240" fill="${palette.paper}"/>
+ ${counter(20,190,280)}
+ ${person(70,190,0.95,"stress")}
+ ${laptop(150,168,false)}
+ ${box(250,150,true)}
+ ${box(270,170,false)}
+ ${speech(90,150,palette.amber+'22')}
+ <text x="98" y="146" font-family="Inter" font-size="10" fill="${palette.inkSoft}">?? estoque</text>`,
+
+`<rect width="320" height="240" fill="${palette.paper}"/>
+ ${counter(20,190,280)}
+ ${person(160,190,1,"stress")}
+ ${phone(160,140,true)}
+ <text x="120" y="90" font-family="Space Grotesk" font-size="12" font-weight="700" fill="${palette.rose}">João: preciso do relatório!</text>`,
+
+`<rect width="320" height="240" fill="${palette.paper}"/>
+ ${person(90,190,1,"neutral")}
+ ${laptop(190,170,true)}
+ <circle cx="220" cy="130" r="26" fill="none" stroke="${palette.teal}" stroke-width="2.4" stroke-dasharray="4 4"/>
+ <text x="196" y="135" font-family="Inter" font-size="10" fill="${palette.teal}">BI?</text>`,
+
+`<rect width="320" height="240" fill="${palette.paper}"/>
+ ${counter(20,190,280)}
+ ${person(80,190,1,"calm")}
+ ${phone(80,140,true)}
+ ${bell(150,110)}
+ ${box(220,150,true)}
+ <text x="126" y="80" font-family="Inter" font-size="10" fill="${palette.inkSoft}">alerta de estoque</text>`,
+
+`<rect width="320" height="240" fill="${palette.paper}"/>
+ ${counter(20,190,280)}
+ ${person(160,190,1,"calm")}
+ ${phone(160,140,false)}
+ <rect x="130" y="112" width="60" height="8" rx="4" fill="${palette.teal}"/>
+ <text x="118" y="96" font-family="Inter" font-size="10" fill="${palette.inkSoft}">fechamento em 3 toques</text>`,
+
+`<rect width="320" height="240" fill="${palette.paper}"/>
+ ${person(90,190,1,"calm")}
+ ${laptop(190,168,true)}
+ ${chart(160,150)}
+ <text x="150" y="90" font-family="Inter" font-size="10" fill="${palette.inkSoft}">relatório enviado ✓</text>`,
+
+`<rect width="320" height="240" fill="${palette.paper}"/>
+ ${counter(20,200,280)}
+ ${person(80,200,0.95,"calm")}
+ ${person(200,200,0.85,"calm")}
+ <text x="60" y="60" font-family="Space Grotesk" font-size="13" font-weight="700" fill="${palette.teal}">meta batida 🎯</text>`
+];
+
+const data = [
+ {stage:"ERA UMA VEZ", tag:{c:"neutral",t:"Contexto"}, cap:"Carlos chega cedo e já começa a compilar, à mão, a planilha de vendas do dia anterior para enviar ao franqueado."},
+ {stage:"TODOS OS DIAS", tag:{c:"alert",t:"Dor · sem visão de estoque"}, cap:"No meio do movimento, ele não sabe quais produtos estão acabando — descobre só quando o cliente já não encontra na prateleira."},
+ {stage:"UM CERTO DIA", tag:{c:"alert",t:"Dor · sem dados prontos"}, cap:"João liga pedindo um relatório urgente de desempenho. Carlos não tem os números organizados e perde a chance de bonificação."},
+ {stage:"POR CAUSA DISSO", tag:{c:"neutral",t:"Decisão"}, cap:"Carlos decide procurar uma forma mais ágil de acompanhar a loja, sem depender de planilhas manuais."},
+ {stage:"POR CAUSA DISSO", tag:{c:"win",t:"RF-004 · RF-016"}, cap:"Passa a usar o app: recebe uma notificação push assim que um item entra em ruptura de estoque, a tempo de repor."},
+ {stage:"POR CAUSA DISSO", tag:{c:"win",t:"RF-005"}, cap:"No fechamento do dia, conclui o fechamento de caixa em poucos toques pelo módulo mobile, sem planilha e sem erro."},
+ {stage:"ATÉ QUE FINALMENTE", tag:{c:"win",t:"RF-002 · RF-003"}, cap:"O dashboard mostra os indicadores do dia prontos, e o relatório segue automaticamente para o franqueado."},
+ {stage:"ATÉ QUE FINALMENTE", tag:{c:"win",t:"Resultado"}, cap:"Carlos volta a focar no salão de vendas — o sistema cuida da burocracia, e a meta é batida com folga."}
+];
+
+const grid = document.getElementById('grid');
+data.forEach((d,i)=>{
+  const panel = document.createElement('div');
+  panel.className = 'panel';
+  panel.innerHTML = `
+    <div class="panel-num">Quadro ${i+1}</div>
+    <div class="stage">${d.stage}</div>
+    <div class="scene">${svgWrap(scenes[i])}</div>
+    <div class="cap">${d.cap}</div>
+    <div class="tag ${d.tag.c}">${d.tag.t}</div>
+  `;
+  grid.appendChild(panel);
+});
 </script>
 </body>
 </html>
